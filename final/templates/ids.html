@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRUSION INSIGHT</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb, #b92b27);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 400px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #f9f9f9;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        input:focus {
+            border: 1px solid #6a11cb;
+        }
+
+        button {
+            background: linear-gradient(135deg, #6a11cb, #b92b27);
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #b92b27, #6a11cb);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>INTRUSION INSIGHT</h1>
+        <form action="{{ url_for('ids_ml_gradio.predict') }}" method="POST">
+            <label for="x1">Port Number:</label>
+            <input type="number" id="x1" name="x1" placeholder="Enter port number">
+
+            <label for="x2">Received Packets:</label>
+            <input type="number" id="x2" name="x2" placeholder="Enter received packets">
+
+            <label for="x3">Received Bytes:</label>
+            <input type="number" id="x3" name="x3" placeholder="Enter received bytes">
+
+            <label for="x4">Sent Bytes:</label>
+            <input type="number" id="x4" name="x4" placeholder="Enter sent bytes">
+
+            <label for="x5">Sent Packets:</label>
+            <input type="number" id="x5" name="x5" placeholder="Enter sent packets">
+
+            <label for="x6">Port alive Duration:</label>
+            <input type="number" id="x6" name="x6" placeholder="Enter alive duration">
+
+            <label for="x7">Delta Received Bytes:</label>
+            <input type="number" id="x7" name="x7" placeholder="Enter delta received bytes">
+
+            <label for="x8">Delta Sent Bytes:</label>
+            <input type="number" id="x8" name="x8" placeholder="Enter delta sent bytes">
+
+            <label for="x9">Delta Port alive Duration:</label>
+            <input type="number" id="x9" name="x9" placeholder="Enter delta port duration">
+
+            <label for="x10">Connection Point:</label>
+            <input type="number" id="x10" name="x10" placeholder="Enter connection point">
+
+            <label for="x11">Total Load/Rate:</label>
+            <input type="number" id="x11" name="x11" placeholder="Enter total load/rate">
+
+            <label for="x12">Active Flow Entries:</label>
+            <input type="number" id="x12" name="x12" placeholder="Enter active flow entries">
+
+            <label for="x13">Packets Matched:</label>
+            <input type="number" id="x13" name="x13" placeholder="Enter packets matched">
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

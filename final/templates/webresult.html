@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .url-result {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .url-result h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #34495e;
+        }
+        .url-result p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .vulnerability {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 5px solid #e74c3c;
+            background: #fef2f2;
+            border-radius: 5px;
+        }
+        .vulnerability h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #c0392b;
+        }
+        .vulnerability p {
+            margin: 4px 0;
+            font-size: 13px;
+        }
+        .risk-level {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+        footer a {
+            display: block;
+            margin: 10px 0;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Scan Results for {{ scanned_url }}</h1>
+        {% for result in results %}
+        <div class="url-result">
+            <h2>URL: {{ result.url }}</h2>
+            <p><strong>Status Code:</strong> {{ result.status }}</p>
+            {% for vuln in result.vulnerabilities %}
+            <div class="vulnerability">
+                <h3>Vulnerability: {{ vuln.name }}</h3>
+                <p><strong>Risk Level:</strong> <span class="risk-level">{{ vuln.risk_level }}</span></p>
+                <p><strong>Description:</strong> {{ vuln.description }}</p>
+                <p><strong>Solution:</strong> {{ vuln.solution }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <a href="/web">Scan Another URL</a>
+        <a href="/home">GO Back To Home</a>
+    </footer>
+</body>
+</html>
